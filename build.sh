@@ -2,21 +2,22 @@
 
 echo
 echo "--------------------------------------"
-echo "      Evolution X 13.0 Buildbot       "
+echo "        Evolution X 14.0 Build       "
 echo "                  by                  "
-echo "                ponces                "
+echo "                 KoysX               "
+echo "         Origin author: ponces        "
 echo "--------------------------------------"
 echo
 
 set -e
 
 BL=$PWD/treble_build_evo
-BD=$HOME/builds
+BD=$PWD/treble_build_evo/GSI
 
 initRepos() {
     if [ ! -d .repo ]; then
         echo "--> Initializing workspace"
-        repo init -u https://github.com/Evolution-X/manifest -b tiramisu
+        repo init -u https://github.com/Evolution-X/manifest -b udc --depth=1
         echo
 
         echo "--> Preparing local manifest"
@@ -28,21 +29,17 @@ initRepos() {
 
 syncRepos() {
     echo "--> Syncing repos"
-    repo sync -c --force-sync --no-clone-bundle --no-tags -j$(nproc --all)
+    repo sync -c --force-sync --no-clone-bundle --no-tags -j8
     echo
 }
 
 applyPatches() {
-    echo "--> Applying prerequisite patches"
-    bash $BL/apply-patches.sh $BL prerequisite
+    echo "--> Applying phh patches"
+    bash $BL/apply-patches.sh $BL phh
     echo
 
-    echo "--> Applying TrebleDroid patches"
-    bash $BL/apply-patches.sh $BL trebledroid
-    echo
-
-    echo "--> Applying personal patches"
-    bash $BL/apply-patches.sh $BL personal
+    echo "--> Applying misc patches"
+    bash $BL/apply-patches.sh $BL misc
     echo
 
     echo "--> Generating makefiles"
@@ -96,23 +93,12 @@ buildPicoVariant() {
     echo
 }
 
-buildVndkliteVariant() {
-    echo "--> Building treble_arm64_bvN-vndklite"
-    cd sas-creator
-    sudo bash lite-adapter.sh 64 $BD/system-treble_arm64_bvN.img
-    cp s.img $BD/system-treble_arm64_bvN-vndklite.img
-    sudo rm -rf s.img d tmp
-    cd ..
-    echo
-}
-
 generatePackages() {
     echo "--> Generating packages"
     buildDate="$(date +%Y%m%d)"
-    xz -cv $BD/system-treble_arm64_bvN.img -T0 > $BD/evolution_arm64-ab-7.9.7-unofficial-$buildDate.img.xz
-    xz -cv $BD/system-treble_arm64_bvN-vndklite.img -T0 > $BD/evolution_arm64-ab-vndklite-7.9.7-unofficial-$buildDate.img.xz
-    xz -cv $BD/system-treble_arm64_bvN-mini.img -T0 > $BD/evolution_arm64-ab-mini-7.9.7-unofficial-$buildDate.img.xz
-    xz -cv $BD/system-treble_arm64_bvN-pico.img -T0 > $BD/evolution_arm64-ab-pico-7.9.7-unofficial-$buildDate.img.xz
+    xz -cv $BD/system-treble_arm64_bvN.img -T0 > $BD/evolution_arm64-ab-8.0.3-unofficial-$buildDate.img.xz
+    xz -cv $BD/system-treble_arm64_bvN-mini.img -T0 > $BD/evolution_arm64-ab-mini-8.0.3-unofficial-$buildDate.img.xz
+    xz -cv $BD/system-treble_arm64_bvN-pico.img -T0 > $BD/evolution_arm64-ab-pico-8.0.3-unofficial-$buildDate.img.xz
     rm -rf $BD/system-*.img
     echo
 }
@@ -125,9 +111,7 @@ generateOta() {
     find $BD/ -name "evolution_*" | sort | {
         while read file; do
             filename="$(basename $file)"
-            if [[ $filename == *"vndklite"* ]]; then
-                name="treble_arm64_bvN-vndklite"
-            elif [[ $filename == *"mini"* ]]; then
+            if [[ $filename == *"mini"* ]]; then
                 name="treble_arm64_bvN-mini"
             elif [[ $filename == *"pico"* ]]; then
                 name="treble_arm64_bvN-pico"
@@ -135,7 +119,7 @@ generateOta() {
                 name="treble_arm64_bvN"
             fi
             size=$(wc -c $file | awk '{print $1}')
-            url="https://github.com/ponces/treble_build_evo/releases/download/$version/$filename"
+            url="https://github.com/KoysX/treble_build_evo/releases/download/$version/$filename"
             json="${json} {\"name\": \"$name\",\"size\": \"$size\",\"url\": \"$url\"},"
         done
         json="${json%?}]}"
@@ -154,7 +138,6 @@ buildTrebleApp
 buildVariant
 buildMiniVariant
 buildPicoVariant
-buildVndkliteVariant
 generatePackages
 generateOta
 
