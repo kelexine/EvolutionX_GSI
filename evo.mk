@@ -1,4 +1,5 @@
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
+$(call inherit-product, vendor/evolution/config/common.mk)
 $(call inherit-product, vendor/evolution/config/BoardConfigSoong.mk)
 $(call inherit-product, device/evolution/sepolicy/common/sepolicy.mk)
 -include vendor/evolution/build/core/config.mk

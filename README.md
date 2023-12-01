@@ -8,7 +8,7 @@ To get started with building Evolution X GSI, you'll need to get familiar with [
     ```
 - Clone this repo:
     ```
-    git clone https://github.com/ponces/treble_build_evo -b evo
+    git clone https://github.com/KoysX/treble_build_evo.git -b evo
     ```
 - Finally, start the build script:
     ```
