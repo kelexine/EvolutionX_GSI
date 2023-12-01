@@ -1,0 +1,42 @@
+From 39de56beed001ecc8177fd5a58a888f6cd4e23d6 Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Tue, 7 Nov 2023 10:49:20 +0800
+Subject: [PATCH] Remove-duplicated-ro.adb.secure-props
+
+---
+ config/common.mk | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/config/common.mk b/config/common.mk
+index bda1929..18fa7f3 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -71,13 +71,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
+     drm.service.enabled=true \
+     media.mediadrmservice.enable=true
+ 
+-ifeq ($(TARGET_BUILD_VARIANT),eng)
+ # Disable ADB authentication
+ PRODUCT_SYSTEM_PROPERTIES += ro.adb.secure=0
+-else
+-# Enable ADB authentication
+-PRODUCT_SYSTEM_PROPERTIES += ro.adb.secure=1
+-endif
+ 
+ ifneq ($(TARGET_BUILD_VARIANT),eng)
+ # Disable extra StrictMode features on all non-engineering builds
+@@ -147,11 +142,6 @@ PRODUCT_PACKAGES += \
+ PRODUCT_COPY_FILES += \
+     vendor/evolution/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
+ 
+-# Support many users/work profiles
+-PRODUCT_SYSTEM_PROPERTIES += \
+-    persist.sys.max_profiles=16 \
+-    fw.max_users=32
+-
+ # Do not include art debug targets
+ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+ 
+-- 
+2.34.1
+

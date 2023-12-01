@@ -1,25 +1,25 @@
-From 122fbeff18f701b7fe64ef366a6812d8db1c98ed Mon Sep 17 00:00:00 2001
-From: Alberto Ponces <ponces26@gmail.com>
-Date: Sat, 19 Nov 2022 11:02:12 +0000
-Subject: [PATCH] Enable mini gapps
+From b992a95de020876dc35b1603e2388ba0caae3dc9 Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Thu, 30 Nov 2023 21:42:38 -0500
+Subject: [PATCH] mini
 
 ---
  config/common.mk | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/config/common.mk b/config/common.mk
-index 72b024fd..cd2d6c87 100644
+index cf9d086..e0ee788 100644
 --- a/config/common.mk
 +++ b/config/common.mk
-@@ -189,7 +189,7 @@ TARGET_IS_PIXEL_FOLD ?= false
- TARGET_IS_PIXEL_TABLET ?= false
- TARGET_PIXEL_STAND_SUPPORTED ?= false
+@@ -197,7 +197,7 @@ TARGET_PIXEL_STAND_SUPPORTED ?= false
+ TARGET_SUPPORTS_GOOGLE_BATTERY ?= false
  TARGET_SUPPORTS_QUICK_TAP ?= false
+ TARGET_USES_LEGACY_BOOTANIMATION ?= false
 -TARGET_USES_MINI_GAPPS ?= false
 +TARGET_USES_MINI_GAPPS ?= true
  TARGET_USES_PICO_GAPPS ?= false
  
- # Face Unlock
+ # Include TurboAdapter without Google Battery support
 -- 
-2.34.1
+2.25.1
 

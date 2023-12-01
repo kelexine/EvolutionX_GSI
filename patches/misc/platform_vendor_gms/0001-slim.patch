@@ -1,0 +1,80 @@
+From 4eb2087117df9ce9fc5390aa1c164589d6b30456 Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Thu, 30 Nov 2023 21:14:28 -0500
+Subject: [PATCH] slim
+
+---
+ gms_full.mk | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/gms_full.mk b/gms_full.mk
+index d8f2879..e3e4b11 100644
+--- a/gms_full.mk
++++ b/gms_full.mk
+@@ -26,15 +26,11 @@ endif
+ PRODUCT_PACKAGES += \
+     CalculatorGooglePrebuilt \
+     CalendarGooglePrebuilt \
+-    Chrome-Stub \
+-    Chrome \
+     DevicePolicyPrebuilt \
+-    Drive \
+     GoogleContacts \
+     GoogleTTS \
+     LatinIMEGooglePrebuilt \
+     LocationHistoryPrebuilt \
+-    Maps \
+     MarkupGoogle \
+     MeetPrebuilt \
+     NgaResources \
+@@ -44,7 +40,6 @@ PRODUCT_PACKAGES += \
+     PixelWallpapers2023 \
+     PlayAutoInstallConfig \
+     PrebuiltDeskClockGoogle \
+-    PrebuiltGmail \
+     SoundAmplifierPrebuilt \
+     SoundPickerPrebuilt \
+     SwitchAccessPrebuilt \
+@@ -96,7 +91,6 @@ PRODUCT_PACKAGES += \
+     AdaptiveVPNPrebuilt \
+     AiWallpapers \
+     AmbientStreaming \
+-    AndroidAutoStubPrebuilt \
+     AppDirectedSMSService \
+     BetterBugStub \
+     CarrierLocation \
+@@ -108,7 +102,6 @@ PRODUCT_PACKAGES += \
+     DCMO \
+     DMService \
+     DeviceIntelligenceNetworkPrebuilt \
+-    FilesPrebuilt \
+     GCS \
+     GoogleDialer \
+     GoogleOneTimeInitializer \
+@@ -124,14 +117,12 @@ PRODUCT_PACKAGES += \
+     PixelSupportPrebuilt \
+     PrebuiltBugle \
+     RecorderPrebuilt \
+-    SafetyHubPrebuilt \
+     ScribePrebuilt \
+     SettingsIntelligenceGooglePrebuilt \
+     SetupWizardPrebuilt \
+     Showcase \
+     TetheringEntitlement \
+     TurboPrebuilt \
+-    Velvet \
+     WallpaperEffect \
+     VzwOmaTrigger \
+     WeatherPixelPrebuilt \
+@@ -145,8 +136,6 @@ PRODUCT_PACKAGES += \
+ 
+ # system/priv-app
+ PRODUCT_PACKAGES += \
+-    DocumentsUIGoogle \
+-    GooglePackageInstaller \
+     TagGoogle
+ 
+ # system_ext/app
+-- 
+2.25.1
+

@@ -1,0 +1,38 @@
+From 9f6e9e955201449cfecef9cf4811fd3cddd9ea37 Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Sat, 25 Nov 2023 08:11:44 -0500
+Subject: [PATCH] Revert-duplicated-inCryptKeeperBounce
+
+---
+ core/java/android/os/storage/StorageManager.java | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/core/java/android/os/storage/StorageManager.java b/core/java/android/os/storage/StorageManager.java
+index 732ddba8c..df881957d 100644
+--- a/core/java/android/os/storage/StorageManager.java
++++ b/core/java/android/os/storage/StorageManager.java
+@@ -1739,21 +1739,6 @@ public class StorageManager {
+         return false;
+     }
+ 
+-    /** {@hide}
+-     * Is this device non default block encrypted and in the process of
+-     * prompting for credentials?
+-     * @return true for prompting for credentials.
+-     *         (Implies isNonDefaultBlockEncrypted() == true)
+-     *         false otherwise
+-     * Note that only system services and CryptKeeper will ever see this return
+-     * true - no app will ever be launched in this state.
+-     * Also note that this state will not change without a teardown of the
+-     * framework, so no service needs to check for changes during their lifespan
+-     */
+-    public static boolean inCryptKeeperBounce() {
+-        return false;
+-    }
+-
+     /** {@hide}
+      * @deprecated Use {@link #isFileEncrypted} instead, since emulated FBE is no longer supported.
+      */
+-- 
+2.25.1
+

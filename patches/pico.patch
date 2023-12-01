@@ -1,25 +1,25 @@
-From 122fbeff18f701b7fe64ef366a6812d8db1c98ed Mon Sep 17 00:00:00 2001
-From: Alberto Ponces <ponces26@gmail.com>
-Date: Sat, 19 Nov 2022 11:02:12 +0000
-Subject: [PATCH] Enable pico gapps
+From 5ccb16338b7958db7eb757277b2f1c637de2a6dd Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Thu, 30 Nov 2023 21:45:48 -0500
+Subject: [PATCH] pico
 
 ---
  config/common.mk | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/config/common.mk b/config/common.mk
-index 72b024fd..7926f105 100644
+index cf9d086..bef97c4 100644
 --- a/config/common.mk
 +++ b/config/common.mk
-@@ -190,7 +190,7 @@ TARGET_IS_PIXEL_TABLET ?= false
- TARGET_PIXEL_STAND_SUPPORTED ?= false
+@@ -198,7 +198,7 @@ TARGET_SUPPORTS_GOOGLE_BATTERY ?= false
  TARGET_SUPPORTS_QUICK_TAP ?= false
+ TARGET_USES_LEGACY_BOOTANIMATION ?= false
  TARGET_USES_MINI_GAPPS ?= false
 -TARGET_USES_PICO_GAPPS ?= false
 +TARGET_USES_PICO_GAPPS ?= true
  
- # Face Unlock
- TARGET_FACE_UNLOCK_SUPPORTED ?= true
+ # Include TurboAdapter without Google Battery support
+ ifeq ($(TARGET_SUPPORTS_GOOGLE_BATTERY), true)
 -- 
-2.34.1
+2.25.1
 

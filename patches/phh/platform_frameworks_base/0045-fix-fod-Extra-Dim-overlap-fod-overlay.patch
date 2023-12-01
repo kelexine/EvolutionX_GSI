@@ -1,0 +1,76 @@
+From 0b818461bf311143c3da59cece781abf2152d403 Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Thu, 30 Nov 2023 20:46:46 -0500
+Subject: [PATCH] fix-fod-Extra-Dim-overlap-fod-overlay
+
+---
+ .../systemui/biometrics/UdfpsController.java   | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java
+index 3788e6dda..d104f0c1a 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java
+@@ -188,6 +188,8 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+     @NonNull private final SecureSettings mSecureSettings;
+     @NonNull private final UdfpsUtils mUdfpsUtils;
+     @NonNull private final InputManager mInputManager;
++    @NonNull private final ColorDisplayManager mColorDisplayManager;
++    private boolean mIgnoreExtraDim;
+     private final boolean mIgnoreRefreshRate;
+ 
+     // Currently the UdfpsController supports a single UDFPS sensor. If devices have multiple
+@@ -920,7 +922,8 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+             @NonNull SecureSettings secureSettings,
+             @NonNull InputManager inputManager,
+             @NonNull UdfpsUtils udfpsUtils,
+-            @NonNull KeyguardFaceAuthInteractor keyguardFaceAuthInteractor) {
++            @NonNull KeyguardFaceAuthInteractor keyguardFaceAuthInteractor,
++            @NonNull ColorDisplayManager colorDisplayManager) {
+         mContext = context;
+         mExecution = execution;
+         mVibrator = vibrator;
+@@ -967,6 +970,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+         mSecureSettings = secureSettings;
+         mUdfpsUtils = udfpsUtils;
+         mInputManager = inputManager;
++        mColorDisplayManager = colorDisplayManager;
+ 
+         mTouchProcessor = mFeatureFlags.isEnabled(Flags.UDFPS_NEW_TOUCH_DETECTION)
+                 ? singlePointerTouchProcessor : null;
+@@ -1072,6 +1076,10 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+ 
+     private void showUdfpsOverlay(@NonNull UdfpsControllerOverlay overlay) {
+         mExecution.assertIsMainThread();
++        mIgnoreExtraDim = mColorDisplayManager.isReduceBrightColorsActivated();
++        if (mIgnoreExtraDim) {
++        Log.d(TAG, "Current extra dim state (showUdfpsOverlay): " + mIgnoreExtraDim);
++        }
+         mFrameworkDimming = mContext.getResources().getBoolean(R.bool.config_udfpsFrameworkDimming);
+         parseBrightnessAlphaArray();
+ 
+@@ -1335,6 +1343,10 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+             return;
+         }
+         if (isOptical()) {
++            if (mIgnoreExtraDim) {
++            mColorDisplayManager.setReduceBrightColorsActivated(false);
++            Log.d(TAG, "Extra dim disabled");
++            }
+             mLatencyTracker.onActionStart(LatencyTracker.ACTION_UDFPS_ILLUMINATE);
+         }
+         // Refresh screen timeout and boost process priority if possible.
+@@ -1421,6 +1433,10 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+         mActivePointerId = -1;
+         mAcquiredReceived = false;
+         if (mOnFingerDown) {
++        if (mIgnoreExtraDim && isOptical()) {
++           mColorDisplayManager.setReduceBrightColorsActivated(true);
++           Log.d(TAG, "Extra dim restored");
++           }
+             if (mAlternateTouchProvider != null) {
+                 mBiometricExecutor.execute(() -> {
+                     mAlternateTouchProvider.onPointerUp(requestId);
+-- 
+2.25.1
+

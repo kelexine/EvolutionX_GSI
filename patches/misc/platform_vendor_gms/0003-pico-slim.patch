@@ -1,0 +1,54 @@
+From 938ea6cf4b470385f3b241bb061b6427cb45c85e Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Thu, 30 Nov 2023 21:30:08 -0500
+Subject: [PATCH] pico-slim
+
+---
+ gms_pico.mk | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/gms_pico.mk b/gms_pico.mk
+index 214dfdc..3c78393 100644
+--- a/gms_pico.mk
++++ b/gms_pico.mk
+@@ -25,8 +25,6 @@ endif
+ # product/app
+ PRODUCT_PACKAGES += \
+     CalculatorGooglePrebuilt \
+-    Chrome-Stub \
+-    Chrome \
+     GoogleContacts \
+     GoogleTTS \
+     LatinIMEGooglePrebuilt \
+@@ -49,7 +47,6 @@ PRODUCT_PACKAGES += \
+ PRODUCT_PACKAGES += \
+     AICorePrebuilt \
+     AiWallpapers \
+-    AndroidAutoStubPrebuilt \
+     AppDirectedSMSService \
+     BetterBugStub \
+     ConfigUpdater \
+@@ -67,11 +64,9 @@ PRODUCT_PACKAGES += \
+     PartnerSetupPrebuilt \
+     Phonesky \
+     PrebuiltBugle \
+-    SafetyHubPrebuilt \
+     SettingsIntelligenceGooglePrebuilt \
+     SetupWizardPrebuilt \
+     TurboPrebuilt \
+-    Velvet \
+     WellbeingPrebuilt
+ 
+ # system/app
+@@ -81,8 +76,6 @@ PRODUCT_PACKAGES += \
+ 
+ # system/priv-app
+ PRODUCT_PACKAGES += \
+-    DocumentsUIGoogle \
+-    GooglePackageInstaller \
+     TagGoogle
+ 
+ # system_ext/app
+-- 
+2.25.1
+
