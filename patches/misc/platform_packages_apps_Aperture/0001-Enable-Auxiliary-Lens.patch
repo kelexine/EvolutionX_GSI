@@ -1,0 +1,35 @@
+From 19be57057ffc5f4e73df9c408e9c8208beea14ca Mon Sep 17 00:00:00 2001
+From: BoNic <BoNio9527@gmail.com>
+Date: Fri, 1 Dec 2023 03:52:20 -0500
+Subject: [PATCH] Enable-Auxiliary-Lens
+
+Change-Id: I9f3ca2d95631e19dc5847e43db56e1407703ee67
+---
+ app/src/main/res/values/config.xml | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/app/src/main/res/values/config.xml b/app/src/main/res/values/config.xml
+index 39d9698..aaa49ca 100644
+--- a/app/src/main/res/values/config.xml
++++ b/app/src/main/res/values/config.xml
+@@ -47,16 +47,12 @@
+           - "60"
+           - "120"
+          Additionally you can prepend `-` to frame rate to mark it as unsupported.
+-         Example:
++    Example: -->
+              <string-array name="config_additionalVideoConfigurations">
+                  <item>0</item> <item>sd|hd|fhd</item> <item>60|120</item>
+                  <item>0</item> <item>uhd</item> <item>-60</item>
+                  <item>1</item> <item>sd|hd|fhd</item> <item>60</item>
+              </string-array>
+-    -->
+-    <string-array name="config_additionalVideoConfigurations">
+-        <!-- No additional configuration is added by default. -->
+-    </string-array>
+ 
+     <!-- An array of triplets made of (camera ID, approximate zoom ratio, exact zoom ratio).
+          These values will be added to the lens selector if one or more cameras uses the
+-- 
+2.25.1
+
