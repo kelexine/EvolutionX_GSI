@@ -4,7 +4,7 @@ echo
 echo "--------------------------------------"
 echo "        Evolution X 14.0 Build       "
 echo "                  by                  "
-echo "                 Kelexine               "
+echo "               Kelexine               "
 echo "         Origin author: ponces        "
 echo "--------------------------------------"
 echo
@@ -29,7 +29,7 @@ initRepos() {
 
 syncRepos() {
     echo "--> Syncing repos"
-    repo sync -c --force-sync --no-clone-bundle --no-tags -j8
+    repo sync -c --force-sync --no-clone-bundle --no-tags  -j$(nproc --all)
     echo
 }
 
