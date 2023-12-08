@@ -8,12 +8,15 @@ To get started with building Evolution X GSI, you'll need to get familiar with [
     ```
 - Clone this repo:
     ```
-    git clone https://github.com/KoysX/treble_build_evo.git -b evo
+    git clone https://github.com/kelexine/EvolutionX_GSI.git -b evo
     ```
 - Finally, start the build script:
     ```
-    bash treble_build_evo/build.sh
+    bash EvolutionX_GSI/build.sh
     ```
+- For a64 builds run the script:
+    ```
+    bash EvolutionX_GSI/build.sh
 
 ## Credits
 These people have helped this project in some way or another, so they should be the ones who receive all the credit:
