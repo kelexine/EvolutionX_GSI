@@ -2,9 +2,9 @@
 
 echo
 echo "--------------------------------------"
-echo "        Evolution X 14.0 Build       "
+echo "        Evolution X 14.0 Build        "
 echo "                  by                  "
-echo "                 Kelexine               "
+echo "               Kelexine               "
 echo "         Origin author: ponces        "
 echo "--------------------------------------"
 echo
@@ -67,38 +67,38 @@ buildTrebleApp() {
 }
 
 buildVariant() {
-    echo "--> Building treble_a64_bvN"
-    lunch treble_a64_bvN-userdebug
+    echo "--> Building treble_a64_bgN"
+    lunch treble_a64_bgN-userdebug
     make -j$(nproc --all) installclean
     make -j$(nproc --all) systemimage
-    mv $OUT/system.img $BD/system-treble_a64_bvN.img
+    mv $OUT/system.img $BD/system-treble_a64_bgN.img
     echo
 }
 
 buildMiniVariant() {
-    echo "--> Building treble_a64_bvN-mini"
+    echo "--> Building treble_a64_bgN-mini"
     (cd vendor/evolution && git am $BL/patches/mini.patch)
     make -j$(nproc --all) systemimage
     (cd vendor/evolution && git reset --hard HEAD~1)
-    mv $OUT/system.img $BD/system-treble_a64_bvN-mini.img
+    mv $OUT/system.img $BD/system-treble_a64_bgN-mini.img
     echo
 }
 
 buildPicoVariant() {
-    echo "--> Building treble_a64_bvN-pico"
+    echo "--> Building treble_a64_bgN-pico"
     (cd vendor/evolution && git am $BL/patches/pico.patch)
     make -j$(nproc --all) systemimage
     (cd vendor/evolution && git reset --hard HEAD~1)
-    mv $OUT/system.img $BD/system-treble_a64_bvN-pico.img
+    mv $OUT/system.img $BD/system-treble_a64_bgN-pico.img
     echo
 }
 
 generatePackages() {
     echo "--> Generating packages"
     buildDate="$(date +%Y%m%d)"
-    xz -cv $BD/system-treble_a64_bvN.img -T0 > $BD/evolution_a64-ab-8.0.3-unofficial-$buildDate.img.xz
-    xz -cv $BD/system-treble_a64_bvN-mini.img -T0 > $BD/evolution_a64-ab-mini-8.0.3-unofficial-$buildDate.img.xz
-    xz -cv $BD/system-treble_a64_bvN-pico.img -T0 > $BD/evolution_a64-ab-pico-8.0.3-unofficial-$buildDate.img.xz
+    xz -cv $BD/system-treble_a64_bgN.img -T0 > $BD/evolution_a64-ab-8.0.3-unofficial-$buildDate.img.xz
+    xz -cv $BD/system-treble_a64_bgN-mini.img -T0 > $BD/evolution_a64-ab-mini-8.0.3-unofficial-$buildDate.img.xz
+    xz -cv $BD/system-treble_a64_bgN-pico.img -T0 > $BD/evolution_a64-ab-pico-8.0.3-unofficial-$buildDate.img.xz
     rm -rf $BD/system-*.img
     echo
 }
@@ -112,11 +112,11 @@ generateOta() {
         while read file; do
             filename="$(basename $file)"
             if [[ $filename == *"mini"* ]]; then
-                name="treble_a64_bvN-mini"
+                name="treble_a64_bgN-mini"
             elif [[ $filename == *"pico"* ]]; then
-                name="treble_a64_bvN-pico"
+                name="treble_a64_bgN-pico"
             else
-                name="treble_a64_bvN"
+                name="treble_a64_bgN"
             fi
             size=$(wc -c $file | awk '{print $1}')
             url="https://github.com/kelexine/EvolutionX_GSI/releases/download/$version/$filename"
