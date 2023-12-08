@@ -4,7 +4,7 @@ echo
 echo "--------------------------------------"
 echo "        Evolution X 14.0 Build       "
 echo "                  by                  "
-echo "                 KoysX               "
+echo "                 Kelexine               "
 echo "         Origin author: ponces        "
 echo "--------------------------------------"
 echo
