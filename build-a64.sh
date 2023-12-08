@@ -2,9 +2,9 @@
 
 echo
 echo "--------------------------------------"
-echo "        Evolution X 14.0 Build       "
+echo "        Evolution X 14.0 Build        "
 echo "                  by                  "
-echo "                 Kelexine               "
+echo "               Kelexine               "
 echo "         Origin author: ponces        "
 echo "--------------------------------------"
 echo
