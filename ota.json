@@ -5,17 +5,17 @@
     {
       "name": "treble_arm64_bvN",
       "size": "1696109600",
-      "url": "https://github.com/KoysX/treble_build_evo/releases/download/v2023.12.01/evolution_arm64-ab-8.0.3-unofficial-20231201.img.xz"
+      "url": "https://github.com/kelexine/treble_build_evo/releases/download/v2023.12.01/evolution_arm64-ab-8.0.3-unofficial-20231201.img.xz"
     },
     {
       "name": "treble_arm64_bvN-mini",
       "size": "1341387764",
-      "url": "https://github.com/KoysX/treble_build_evo/releases/download/v2023.12.01/evolution_arm64-ab-mini-8.0.3-unofficial-20231201.img.xz"
+      "url": "https://github.com/kelexine/treble_build_evo/releases/download/v2023.12.01/evolution_arm64-ab-mini-8.0.3-unofficial-20231201.img.xz"
     },
     {
       "name": "treble_arm64_bvN-pico",
       "size": "1326826004",
-      "url": "https://github.com/KoysX/treble_build_evo/releases/download/v2023.12.01/evolution_arm64-ab-pico-8.0.3-unofficial-20231201.img.xz"
+      "url": "https://github.com/kelexine/treble_build_evo/releases/download/v2023.12.01/evolution_arm64-ab-pico-8.0.3-unofficial-20231201.img.xz"
     }
   ]
 }

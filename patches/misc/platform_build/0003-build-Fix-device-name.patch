@@ -19,7 +19,7 @@ index e163b0ec6..5f8ff2d6a 100755
  fi
  
 -echo "org.evolution.device=$EVOLUTION_DEVICE"
-+echo "org.evolution.device=$TARGET_PRODUCT"
++echo "org.evolution.device=kelly"
  
  echo "# end build properties"
 -- 
