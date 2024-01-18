@@ -11,8 +11,8 @@ echo
 
 set -e
 
-BL=$PWD/treble_build_evo
-BD=$PWD/treble_build_evo/GSI
+BL=$PWD/EvolutionX_GSI
+BD=$PWD/EvolutionX_GSI/GSI
 
 initRepos() {
     if [ ! -d .repo ]; then
@@ -119,7 +119,7 @@ generateOta() {
                 name="treble_arm64_bvN"
             fi
             size=$(wc -c $file | awk '{print $1}')
-            url="https://github.com/KoysX/treble_build_evo/releases/download/$version/$filename"
+            url="https://github.com/kelexine/EvolutionX_GSI/releases/download/$version/$filename"
             json="${json} {\"name\": \"$name\",\"size\": \"$size\",\"url\": \"$url\"},"
         done
         json="${json%?}]}"
